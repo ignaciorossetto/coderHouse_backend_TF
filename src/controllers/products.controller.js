@@ -1,5 +1,6 @@
 import { ProductService } from "../repository/index.js";
 import CustomError from "../services/errors/customError.js";
+import config from "../config/config.js";
 
 
 export const getAllProducts = async (req, res, next) => {
@@ -34,8 +35,8 @@ export const getAllProducts = async (req, res, next) => {
         page: response.page,
         hasPrevPage: response.hasPrevPage,
         hasNextPage: response.hasNextPage,
-        prevLink: response.hasPrevPage ? `http://localhost:5000/api/products?sort=${sortQuery}&category=${categoryName}&limit=${limitQuery}&page=${response.prevPage}` : null,
-        nextLink: response.hasNextPage ? `http://localhost:5000/api/products?sort=${sortQuery}&category=${categoryName}&limit=${limitQuery}&page=${response.nextPage}` : null,
+        prevLink: response.hasPrevPage ? `${config.localHost}/api/products?sort=${sortQuery}&category=${categoryName}&limit=${limitQuery}&page=${response.prevPage}` : null,
+        nextLink: response.hasNextPage ? `${config.localHost}/api/products?sort=${sortQuery}&category=${categoryName}&limit=${limitQuery}&page=${response.nextPage}` : null,
       })
     
   } catch (error) {
