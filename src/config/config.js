@@ -1,4 +1,4 @@
-// import dotenv from 'dotenv'
+import dotenv from 'dotenv'
 import { Command } from 'commander'
 
 const program = new Command()
@@ -7,9 +7,9 @@ program.parse()
 
 const environment = program.opts().mode
 
-// dotenv.config({
-//     path: environment == "test" ? './.env.test' : environment == 'dev' ? './.env.dev' : './.env.production'
-// })
+dotenv.config({
+    path: environment == "test" ? './.env.test' : environment == 'dev' ? './.env.dev' : './.env.production'
+})
 
 export default {
     port: process.env.PORT,
