@@ -1,0 +1,25 @@
+<div style="display: flex;flex-direction:column; align-items:center; width:100%;" >
+    <div style="display: flex;flex-direction:column; justify-content:center; width:100%; max-width: 1024px;">
+
+
+<h1 style="align-self: center;">Bienvenidos al chat!!</h1>
+<h4 style="align-self: flex-end; cursor:pointer;" id="eliminarChat">
+    Eliminar chat
+    </h4>
+<h3 id="userName"></h3>
+<div style="width: 200px">
+    <div>
+        <input type="text" id="chatBox"/>
+    </div>
+    <button id="chatBoxClick" >Enviar</button>
+</div>
+<div>
+    <p id="chatLogs"></p>
+</div>
+</div>
+    </div>
+
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="../static/scripts/messages.js"></script>

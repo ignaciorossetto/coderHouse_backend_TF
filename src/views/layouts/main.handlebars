@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/static/style/style.css">
+    <title>Document</title>
+</head >
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">E-commerce</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse w-100 justify-content-between" id="navbarSupportedContent">
+      <ul style="margin-right: 0px!important;" class="navbar-nav me-auto mb-2 mb-lg-0 m-0 mr-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/products"><i class="fs-4 bi bi-house"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://localhost:5000/messages/"><i class="fs-4 bi bi-chat-dots"></i></a>
+        </li>
+        <li class="nav-item" id="adminBtn">
+          <a class="nav-link" href="http://localhost:5000/admin/"><i class="fs-4 bi bi-gear"></i></a>
+        </li>
+        <li class="nav-item" id="addProductBtn">
+          <a class="nav-link" href="http://localhost:5000/addproduct"><i class="fs-4 bi bi-plus-circle"></i></a>
+        </li>
+      </ul>
+      <ul style="margin-right: 0px!important;" class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-end m-0 mr-0">
+        <li class="nav-item" id="privateBtn">
+          <a class="nav-link" id="profileImgHeader" href="http://localhost:5000/private/"></i></a>
+        </li>
+        <li class="nav-item" id="loginBtn">
+          <a class="nav-link" aria-current="page" href="http://localhost:5000/login/">Login</a>
+        </li>
+        <li class="nav-item" id="cartBtn">
+          <a class="nav-link" aria-current="page" href="http://localhost:5000/cart/"><i class="fs-4 bi bi-cart"></i></a>
+          <span id="cartQuantity"></span>
+        </li>
+        <li class="nav-item" id="logoutBtn">
+          <button class="nav-link" aria-current="page" >
+            <i class="fs-4 bi bi-box-arrow-right"></i>
+            </button>
+        </li>
+        <li class="nav-item" id="registerBtn">
+          <a class="nav-link" href="http://localhost:5000/register/">Register</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+{{!-- <header style="width: 100%; display: flex; justify-content:center;">
+    <div style="width: 100%; max-width:1024px; display: flex; justify-content:space-between;">
+
+    <div>
+        <h3 >
+            <a href="http://localhost:5000/login/">
+            Login
+            </a>
+        </h3>
+        <h3 >
+            <button  >
+            Logout
+            </button>
+        </h3>
+        <h3 id="registerBtn">
+            <a href="http://localhost:5000/register/">
+            Register
+            </a>
+        </h3>
+    </div>
+    <div style="align-self: center;">
+        <a href="/products">
+            <h3>Home</h3>
+        </a>
+        <a href="/private">
+            <h3>Private</h3>
+        </a>
+    </div>
+    <div>
+        <h3 >
+            <a href="http://localhost:5000/messages/">
+            Chatear con un vendedor
+            </a>
+        </h3>
+        <h3 id="cartBtn">
+            <a href="http://localhost:5000/cart/">
+            Ver Carrito
+            </a>
+        </h3>
+        <h3 >
+            <a href="http://localhost:5000/admin/">
+            ADMIN
+            </a>
+        </h3>
+    </div>
+    </div>
+</header> --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src='../../static/scripts/main.js'></script>
+<body>
+    {{{body}}}
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+</html>

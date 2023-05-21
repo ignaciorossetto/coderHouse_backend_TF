@@ -1,0 +1,16 @@
+<h1 style="display: flex; justify-content:center;">Bienvenido {{{user.user._doc.name}}}!</h1>
+
+<div style="display: flex; width: 100%; justify-content:space-evenly; ">
+    <div>
+        <h3>Panel de control</h3>
+        <ul id="privateViewList" class="list-group">
+            <li class="list-group-item list-group-item-action"><a href="/private/info">Ver datos de usuario</a></li>
+            <li class="list-group-item list-group-item-action"><a href="/private/lastpurchases">Ver ultimas compras</a></li>
+            <li class="list-group-item list-group-item-action"><a href="/private/password">Cambiar contrasena</a></li>
+            <li class="list-group-item list-group-item-action"><a href="/private/profileImg">Cambiar foto de perfil</a></li>
+        </ul>
+    </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="../../../static/scripts/private.js"></script>

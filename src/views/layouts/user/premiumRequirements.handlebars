@@ -1,0 +1,84 @@
+<div class="premiumReqContainer" 
+style="
+width: 100%;
+display:flex;
+flex-direction:column;
+align-items:center;
+"
+>
+
+<h1 style="display: flex; justify-content:center;">Bienvenido {{{user.user._doc.name}}}!</h1>
+
+<div id="premiumReqContainer" style="display: flex; max-width:1024px; width: 100%; justify-content:center; " class="flex-column align-items-center">
+    <h3 class="my-5">Documentos requeridos:</h3>
+    <div id="dniFormContainer" style="display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;">
+    <form 
+    id="dniForm"
+    style="width: 100%;" 
+    class="d-flex flex-column justify-content-between my-3" 
+    enctype='multipart/form-data'
+    action="/api/users/premiumReq/dni"
+    method="post"
+    >
+        <label class="d-flex justify-content-between"> DNI
+        <input name='premiumReq' accept="image/*" type="file" multiple class="premiumReqInputs mx-3">
+        </label>
+        <br>
+        <p style="width: 75%; color: grey">*Foto de cada lado DNI</p>
+        <button id="dniFormBtn" class="btn btn-primary"> Subir DNI</button>
+    </form>
+    </div>
+    <br>
+    <div id="addressFormContainer" style="display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;"> 
+    <form 
+    id="addressForm"
+    style="width: 100%;" 
+    class="d-flex flex-column justify-content-between my-3" 
+    enctype='multipart/form-data'
+    action="/api/users/premiumReq/address"
+    method="post"
+    >
+        <label class="d-flex justify-content-between"> Comprobante domicilio  
+        <input name='premiumReq' accept="image/*, application/pdf" type="file" class="premiumReqInputs mx-3">
+        </label>
+        <br>
+        <p style="width: 75%; color: grey">*Archivo pdf o foto de algun servicio.</p>
+        <button id="addressFormBtn" class="btn btn-primary"> Subir comprobante domicilio</button>
+    </form>
+    </div>
+        <br>
+    
+    
+    <div id="accStatementFormContainer" style="display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;">
+      
+    <form 
+    id="accStatementForm"
+    style="width: 100%;" 
+    class="d-flex flex-column justify-content-between my-3" 
+    enctype='multipart/form-data' 
+    action="/api/users/premiumReq/accStatement"
+    method="post"
+    >
+        <label class="d-flex justify-content-between"> Estado de cuenta
+        <input name='premiumReq' accept="image/*, application/pdf" type="file" class="premiumReqInputs mx-3">
+        </label>
+        <br>
+        <p style="width: 75%; color: grey">*Archivo pdf o foto de estado de cuenta.</p>
+        <button id="accStatementFormBtn" class="btn btn-primary"> Subir estado de cuenta</button>
+    </form>
+    </div>
+        <br>
+
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="../../../static/scripts/premiumRequirements.js"></script>

@@ -1,0 +1,56 @@
+<h1 style="display: flex; justify-content:center;">Informacion de envio y pago</h1>
+    <div id="shippingInfoContainer" style="display: flex;flex-direction:column; align-items:center; width:100%;  margin-top: 25px;">
+
+
+    <div style="display:flex; flex-direction:row; width: 100%; justify-content: center;max-width: 1024px;">
+    <div
+        style="display:flex; flex-direction:column;  width: 50%"
+    >
+
+    <form 
+        id="checkoutForm"
+        style="
+            display:flex; 
+            flex-direction:column;  
+            width: 70%; 
+            border: solid 1px black; 
+            padding: 30px; 
+            border-radius:10px;
+            "
+        >
+        <input style="padding:5px;" name="name" placeholder="Nombre completo" type="text" required/>
+        <br>
+        <input style="padding:5px;" name="address" placeholder="direccion" type="text" required/>
+        <br>
+        <input style="padding:5px;" name="id" placeholder="documento" type="number" required/>
+        <br>
+        <input style="padding:5px;" name="email" placeholder="email" type="email" required/>
+        <br>
+        <input style="padding:5px;" name="cellphone" placeholder="cellphone" type="number" required/>
+        <br>
+        <select style="padding:5px;" name="select" required>
+            <option value="mercadopago">mercadopago</option>
+            <option value="transferencia" selected>transferencia</option>
+        </select>
+        <br>
+        <input  id='resetButton' type="reset" hidden/>
+        <br>
+        <button class="btn btn-primary" id="createProductButton">Comprar</button>
+        <br>
+    </form>
+    <hr>
+    <hr>
+
+
+    </div>
+
+    <div>
+        <h2>Resumen de carrito</h2>
+    <ul id="cartResume">    
+    </ul>
+    </div>
+</div>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="../static/scripts/shippinginfo.js"></script>

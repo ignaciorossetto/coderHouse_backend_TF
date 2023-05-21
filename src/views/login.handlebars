@@ -1,0 +1,35 @@
+<div style="width: 100%; display:flex; flex-direction: column;  align-items: center;">
+    <div style="width: 100%; max-width: 1024px; display:flex; flex-direction: column; justify-content:center; align-items: center;">
+        <h1>Login</h1>  
+        <br>
+        <form action="/api/users/login" method="post">
+            <div style="width: 100%; display:flex;justify-content:space-between;">
+            <label style="margin-right: 15px;">Email:</label>
+            <input name="email" type="email" placeholder="ex: juan@hotmail.com"/>
+            </div>
+            <br>
+            <div style="width: 100%; display:flex;justify-content:space-between;">
+            <label style="margin-right: 15px;">Contraseña:</label>
+            <input name="password" type="password"/> 
+            </div>
+            <br>
+            <input type="submit" class="btn btn-primary" value="Ingresar!"/>
+            <br>
+            <br>
+            <span>Olvidaste la Contraseña? <a href="/forgotPassword">Recuperala aca!</a></span>
+        </form>
+            <br>
+
+            <div style="width: 100%; display:flex;justify-content:center;margin:20px 0px;">
+                <button  style="margin:0px 5px;" class="btn btn-primary ">
+                    <a href="http://localhost:5000/api/users/login/google" class="text-dark"><i class="bi bi-google text-success"> </i>   Ingresa con Google</a>
+                </button>
+            </div>
+            <a href="/register">
+                <button onclick="(e)=>e.preventDefault()" class="btn btn-success">Registrarse</button>
+            </a>
+
+    </div>
+</div>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="../static/scripts/login.js"></script>

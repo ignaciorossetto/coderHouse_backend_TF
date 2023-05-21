@@ -1,0 +1,141 @@
+paths:
+  /api/users:
+    post:
+      summary: Crea un usario.
+      tags:
+        - Users
+      responses:
+        "200": 
+          description: Creo un producto exitosamente.
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#components/schemas/User'
+        "500":
+          description: Error del servidor, revisar req.body.
+  /api/users/changePassword:
+    put:
+      summary: Cambia la contrasena dentro del panel de usuario. Debe estar logeado.
+      tags:
+        - Users
+      responses:
+        "200":
+          description: el usuario cambio su contraseña exitosamente.
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#components/schemas/User'
+        "401": 
+          description: No se encontro el usuario
+        "404": 
+          description: No se puede cambiar la contrasena de usuarios que se registraron con google. O que la contrasena actual es incorrecta.
+        "500": 
+          description: Hubo un error en la llamada al servidor. Ya que no hay queries.
+  /api/users/modify/{id}:
+    post:
+      summary: Para modificar un usuario, aunque en la webapp se utiliza para modificar el carrito cuando se agregan los datos de shipping y payment.
+      tags: 
+        - Users
+      responses:
+        "200": 
+          description: La informacion de shipping y payment se actualizo correctamente.
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#components/schemas/User'
+        "500": 
+          description: Error del servidor. O se intento cambiar algun dato inmutable.
+  /api/users/forgotpass:
+    post:
+      summary: Para modificar un usuario, aunque en la webapp se utiliza para modificar el carrito cuando se agregan los datos de shipping y payment.
+      tags: 
+        - Users
+      responses:
+        "200": 
+          description: Se envio un email correctamente. Utilizar el link para el pago.
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#components/schemas/User'
+        "404": 
+          description: No existe un usuario con ese mail. Usuarios registrados con google no pueden cambiar la contrasena.
+        "500": 
+          description: Error del servidor. O se intento cambiar algun dato inmutable.
+  /api/users/changepass:
+    post:
+      summary: Luego de enviado el mail con link unico para cambiar la contrasena, se procede a ingresar la contrasena nueva.
+      tags: 
+        - Users
+      responses:
+        "200": 
+          description: La contrasena se modifico exitosamente.
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#components/schemas/User'
+        "404": 
+          description: No existe un usuario con ese email o Link expiro.
+        "500": 
+          description: Error del servidor. O se intento cambiar algun dato inmutable.
+  /api/users/premium/{id}:
+    get:
+      summary: Luego de enviado el mail con link unico para cambiar la contrasena, se procede a ingresar la contrasena nueva.
+      tags: 
+        - Users
+      parameters:
+      - name: id
+        in: path
+        required: true
+        desccription: ID del usuario
+        schema:
+          $type: String
+      responses:
+        "200": 
+          description: Cambia el tipo de usuario de user a premium y viceversa.
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#components/schemas/User'
+        "500": 
+          description: Error del servidor. O se intento cambiar algun dato inmutable.
+    
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: ID auto generado por mongo.
+        name:
+          type: String
+          description: Nombre del usuario.
+        password:
+          type: String
+          description: Password del usuario. Hasheada.
+        email:
+          type: String
+          description: Direccion de correo del usuario.
+        admin:
+          type: Boolean
+          description: Si es admin o no. Valor default false.
+        type:
+          type: String
+          description: Tipo de usuario, default user. user o premium.
+        strategy:
+          type: String
+          description: Estrategia con la que se creo el usuario. Local o Google.
+     
+

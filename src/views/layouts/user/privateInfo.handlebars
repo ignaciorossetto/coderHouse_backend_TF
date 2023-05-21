@@ -1,0 +1,29 @@
+<main class="d-flex flex-column justify-content-center align-items-center" style="width: 100%; ">
+        <h1>Datos</h1>
+    <div class="d-flex justify-content-center align-items-center" style="width: 100%; max-width: 1024px; position:relative">
+    <a href="/private" style="position: absolute; top:-35px; left: 0; font-size:25px"><i class="bi bi-arrow-left"></i></a>
+    <table class="table table-bordered mt-5">
+
+    <tbody>
+      <tr>
+        <th>Nombre completo</th>
+        <td>{{{user.user._doc.name}}}</td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td>{{{user.user._doc.email}}}</td>
+      </tr>
+      <tr>
+        <th>Tipo de ususario</th>
+        <td>{{{user.user._doc.type}}}</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+</main>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="../../../static/scripts/privateInfo.js"></script>

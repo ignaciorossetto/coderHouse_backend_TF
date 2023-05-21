@@ -1,0 +1,127 @@
+paths:
+  /api/products:
+    get:
+      summary: Obtiene todos los productos
+      tags:
+        - Products
+      responses:
+        "200":
+          description: Los productos fueron enviados exitosamente.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#components/schemas/Product'
+        "500": 
+          description: Hubo un error en la llamada al servidor. Ya que no hay queries.
+    post:
+      summary: Crea un producto. Para poder hacerlo, el usuario debe ser admin o premium.
+      tags:
+        - Products
+      responses:
+        "200": 
+          description: Creo un producto exitosamente.
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#components/schemas/Product'
+        "404":
+          description: Se intento crear un producto sin estar identificado.
+        "500":
+          description: Error del servidor, revisar req.body.
+    delete:
+      summary: Borra todos los productos. Para poder hacerlo, el usuario debe ser admin.
+      tags:
+        - Products
+      responses:
+        "200": 
+          description: Borra todos los productos exitosamente.
+        "500":
+          description: Error del servidor.
+  /api/products/{id}:
+    get:
+      summary: Obtiene un solo producto
+      tags:
+        - Products
+      parameters:
+      - name: id
+        in: path
+        required: true
+        desccription: ID del producto
+        schema:
+          $type: String
+      responses:
+        "200":
+          description: el producto fueron enviados exitosamente.
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#components/schemas/Product'
+        "500": 
+          description: Hubo un error en la llamada al servidor. Ya que no hay queries.
+    put:
+      summary: Modifica un producto. Se debe ser admin o dueño del producto.
+      tags: 
+        - Products
+      responses:
+        "200": 
+          description: El producto se actualizo correctamente.
+        "500": 
+          description: Error del servidor. O se intento cambiar algun dato inmutable.
+    delete:
+      summary: Borra el producto. Para poder hacerlo, el usuario debe ser admin o dueño del producto y estar logeado.
+      tags:
+        - Products
+      responses:
+        "200": 
+          description: El producto se borro exitosamente.
+        "500":
+          description: Error del servidor.
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: ID auto generado por mongo.
+        title:
+          type: String
+          description: Nombre del prodcuto.
+        price:
+          type: Number
+          description: Precio del producto.
+        description:
+          type: String
+          description: Descripcion del producto.
+        category:
+          type: String
+          description: Categoria del producto.
+        image:
+          type: String
+          description: Direccion de donde se aloja la imagen.
+        code:
+          type: String
+          description: Codigo unico/inmutable de producto.
+        stock:
+          type: Number
+          description: Stock disponible del producto.
+        owner:
+          type: String
+          description: _id del dueño del producto, por defecto es admin.
+      example:
+        _id: ObjectId("63b89ddeeaf13a656510615b")
+        title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"
+        price: 200
+        description: "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve your everyday"
+        category: "men's clothing"
+        image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+        code: "1"
+        stock: 10
+        owner: "admin"
+

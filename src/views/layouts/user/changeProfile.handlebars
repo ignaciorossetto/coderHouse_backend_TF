@@ -1,0 +1,29 @@
+<h1 style="display: flex; justify-content:center;">Cambia imagen de perfil</span></h1>
+<div style="display: flex; flex-direction:column; width: 100%; justify-content:center; align-items:center; "/>
+    <div>
+        {{#if user._doc.profileImg}}
+        <h3>Foto actual</h3>
+            <img 
+            id="changeProfImgImg"
+            style="object-fit:cover; width: 150px; height: 150px; border-radius: 50px; margin: 15px 0px;"
+            src={{{user._doc.profileImg}}} alt="asdasd" class="currentProfileImg"/>
+        {{else}}
+            <h3>No hay foto de perfil</h3>
+        {{/if}}
+        <br><br>
+    <form id="changeProfileImgForm" method="post" action="/api/users/changeProfileImg" enctype="multipart/form-data">
+        <h3>Selecciona una nueva foto</h3>
+        <label>Seleccionar imagen</label>
+        <input name="profileImg" id="profileImg" type="file" accept="image/*" required />
+        <br>
+        <br>
+        <button id="confirmBtn" class="btn btn-primary">Confirmar!</button>
+    </form>
+    </div>
+
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="../../../static/scripts/changeProfileImg.js"></script>

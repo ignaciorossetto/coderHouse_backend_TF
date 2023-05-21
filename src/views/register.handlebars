@@ -1,0 +1,30 @@
+<div style="width: 100%; display:flex; flex-direction: column;  align-items: center;">
+    <div style="width: 100%; max-width: 1024px; display:flex; flex-direction: column; justify-content:center; align-items: center;">
+        <h1>Sign up</h1>  
+        <form action="/api/users" method="post">
+            <div style="width: 100%; display:flex;justify-content:space-between;">
+            <label style="margin-right: 15px;">Usuario:</label>
+            <input name='name' type="text" placeholder="ex: Juan" id="usernameInput" required/>
+            </div>
+            <span id="usernameSpan" style="color:red;"></span>
+            <br>
+            <div style="width: 100%; display:flex;justify-content:space-between;">
+            <label style="margin-right: 15px;">Contraseña:</label>
+            <input name='password' type="password" required/> 
+            </div>
+            <br>
+            <div style="width: 100%; display:flex;justify-content:space-between;">
+            <label style="margin-right: 15px;">Email:</label>
+            <input name='email' type="mail" id="emailInput" required/> 
+            </div>
+            <span id="emailSpan" style="color:red;"></span>
+            <br>
+            <input type="submit" value="Crear usuario!"/>
+        </form>
+            <br>
+            <br>
+
+    </div>
+</div>
+
+<script src="../static/scripts/register.js"></script>

@@ -1,0 +1,57 @@
+<h1 style="display: flex; justify-content:center;">Lista de productos con Socket.io!</h1>
+<div style="display:flex; flex-direction:row; width: 100%">
+    <div
+        style="display:flex; flex-direction:column;  width: 50%"
+    >
+
+    <form 
+        id="form"
+        style="display:flex; flex-direction:column;  width: 80%; border: solid 1px black"
+        >
+        <input name="title" placeholder="title" type="text" required/>
+        <br>
+        <input name="price" placeholder="price" type="number" required/>
+        <br>
+        <input name="description" placeholder="description" type="text" required/>
+        <br>
+        <input name="category" placeholder="category" type="text" required/>
+        <br>
+        <input name="image" placeholder="thumbnail" type="text" required/>
+        <br>
+        <input name="code" placeholder="code" type="text" required/>
+        <br>
+        <input name="stock" placeholder="stock" type="number" required/>
+        <br>
+        <input  id='resetButton' type="reset" hidden/>
+        <br>
+        <button id="createProductButton">Crear producto!</button>
+        <br>
+    </form>
+    <hr>
+    <hr>
+        <div 
+        style="display:flex; flex-direction:column;  width: 80% ; border: solid 1px black"
+        >
+        <input id="deleteItemInput" type="text" placeholder="Id de producto a eliminar"/>
+        <br>
+        <button 
+        id="deletItemButton"
+        > Eliminar item</button>
+        </div>
+
+    </div>
+
+    <div>
+        <h2>Lista de Productos</h2>
+    <ul id="socketList">    
+    </ul>
+
+    </div>
+
+    
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="../static/scripts/realTimeProducts.js"></script>

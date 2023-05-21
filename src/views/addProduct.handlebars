@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="addProductContainer" class="addProductContainer d-flex flex-column w-100 align-items-center justify-content-center ">
+        <h2>Agregar producto!</h2>
+
+    <form id="addProductForm" class="addProductForm d-flex flex-column w-50 mt-5 p-3 border rounded shadow bg-primary-subtle" >
+        <div class="mb-3 ">
+            <label for="title" class="form-label">Titulo:</label>
+            <input type="text" class="form-control" id="addProductFormInputTitle" placeholder="Ingresar Titulo" required name="title">
+        </div>
+        <div class="mb-3 ">
+            <label for="price" class="form-label">Precio:</label>
+            <input type="number" class="form-control" id="addProductFormInputPrice" placeholder="Ingresar Precio" required name="price">
+        </div>
+        <div class="mb-3">
+            <label for="category " class="form-label">Categoria:</label>
+            <input type="text" class="form-control" id="addProductFormInputCategory" placeholder="Ingresar Categoria" required name="category">
+        </div>
+        <div class="mb-3">
+            <label for="image" class="form-label">Imagen</label>
+            <input type="file" class="form-control" id="addProductFormInputImage" placeholder="URL de una imagen" required name="image">
+        </div>
+        <div class="mb-3">
+            <label for="code" class="form-label">Codigo: debe ser unico</label>
+            <input type="text" class="form-control" id="addProductFormInputCode" placeholder="Codigo de producto" required name="code">
+        </div>
+        <div class="mb-3 ">
+            <label for="stock" class="form-label">Stock:</label>
+            <input type="number" class="form-control" id="addProductFormInputStock" placeholder="Ingresar Stock" required name="stock">
+        </div>
+        <div class="mb-3 ">
+            <label for="description " class="form-label">Descripcion:</label>
+            <textarea type="text " class="form-control" id="addProductFormInputDescription"  required name="description"></textarea>
+        </div>
+
+        <input name="submitBtn" type="submit" value="Crear producto!"  class="btn btn-primary"/>
+    </form>
+    </div>
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="../static/scripts/addProduct.js"></script>
+</html>
+
