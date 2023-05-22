@@ -206,7 +206,8 @@ export const add_15_FakeProducts = async (req,res,next) => {
       code: faker.random.numeric()}
       )
     }
-    
+    const aa = fakeProduct()
+    console.log(aa)
     for (let i = 0; i < 15; i++) {
       await ProductService.add(fakeProduct())
     }
