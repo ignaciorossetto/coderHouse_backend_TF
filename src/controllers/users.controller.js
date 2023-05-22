@@ -13,7 +13,7 @@ import fs from "fs";
 import path from "path";
 
 export const createUser = async (req, res) => {
-  res.redirect("http://localhost:5000/login?register=success");
+  res.redirect("/login?register=success");
 };
 
 export const logIn = async (req, res) => {
@@ -30,14 +30,14 @@ export const logIn = async (req, res) => {
   res
     .cookie("coderCookieToken", access_token)
     .redirect(
-      `http://localhost:5000/products?login_status=success&name=${req.body.email}`
+      `/products?login_status=success&name=${req.body.email}`
     );
 };
 
 export const logOut = async (req, res) => {
   try {
     res.clearCookie("coderCookieToken");
-    res.redirect(`http://localhost:5000/login?logout_status=success`);
+    res.redirect(`/login?logout_status=success`);
     return;
   } catch (error) {
     req.logger.warn({ Name: error.name, Message: error.message });
@@ -91,7 +91,7 @@ export const googleLoginCallback = async (req, res) => {
     const access_token = generateToken(user);
     res
       .cookie("coderCookieToken", access_token)
-      .redirect(`http://localhost:5000/products?login_status=success`);
+      .redirect(`/products?login_status=success`);
   } catch (error) {
     req.logger.warn({ Name: error.name, Message: error.message });
     next(error);
@@ -99,7 +99,7 @@ export const googleLoginCallback = async (req, res) => {
 };
 
 export const googleFailedLogin = async (req, res) => {
-  res.redirect(`http://localhost:5000/login?login_status=Gfailed`);
+  res.redirect(`/login?login_status=Gfailed`);
 };
 
 export const modifyUser = async (req, res) => {
@@ -198,7 +198,7 @@ export const changeProfileImg = async (req, res, next) => {
         message: "Could not update profile image",
         cause: "Server Error",
       });
-    res.redirect("http://localhost:5000/private/");
+    res.redirect("/private/");
   } catch (error) {
     next(error);
   }
@@ -240,7 +240,7 @@ export const changePremReqStatus = async(req,res,next) => {
       }
     }
     await UserService.update(id, obj)
-    res.redirect('http://localhost:5000/private/premiumReq')
+    res.redirect('/private/premiumReq')
   } catch (error) {
    next(error) 
   }
@@ -289,7 +289,7 @@ export const forgotPassword = async (req, res, next) => {
     const token = jwt.sign({ user }, config.jwtSecret + user.password, {
       expiresIn: "15m",
     });
-    const link = `http://localhost:5000/changePassword?token=${token}&email=${req.body.email}`;
+    const link = `/changePassword?token=${token}&email=${req.body.email}`;
     const Mailer = new Mail();
     const html = ` 
     <h1>Hola ${user.name}</h1>
