@@ -198,6 +198,7 @@ export const add_15_FakeProducts = async (req,res,next) => {
     const fakeProduct = () => { 
       return( 
       {title: faker.commerce.productName(),
+      stock:5,
       price: 5000,
       description: faker.commerce.productDescription(),
       category: faker.commerce.department(),
