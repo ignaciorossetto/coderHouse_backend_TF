@@ -1,4 +1,3 @@
-import config from "../../config/config.js";
 const productsGrid = document.getElementById("productsGrid");
 const productSpinner = document.getElementById("productSpinner");
 const selectCategories = document.getElementById("selectCategories");
