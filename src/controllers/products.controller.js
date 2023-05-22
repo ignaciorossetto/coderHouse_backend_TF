@@ -4,6 +4,7 @@ import config from "../config/config.js";
 
 
 export const getAllProducts = async (req, res, next) => {
+  console.log('hitted')
   let categoryName = req.query.category
   const catQuery = categoryName === undefined || categoryName === 'undefined'  ? {} : {category: categoryName}
   const limitQuery = req.query.limit === undefined ? 1000 : req.query.limit
@@ -14,6 +15,7 @@ export const getAllProducts = async (req, res, next) => {
       const response = await ProductService.getAllPaginate(catQuery, {
         limit: limitQuery, page: pageQuery, sort: sortQuery === 'asc' ? {price:1} : sortQuery === 'desc' ? {price:-1} : {}
       })
+      console.log(response)
       if (!response) {
         return CustomError.createError({
           name: "DB error",
@@ -35,8 +37,8 @@ export const getAllProducts = async (req, res, next) => {
         page: response.page,
         hasPrevPage: response.hasPrevPage,
         hasNextPage: response.hasNextPage,
-        prevLink: response.hasPrevPage ? `${config.localHost}/api/products?sort=${sortQuery}&category=${categoryName}&limit=${limitQuery}&page=${response.prevPage}` : null,
-        nextLink: response.hasNextPage ? `${config.localHost}/api/products?sort=${sortQuery}&category=${categoryName}&limit=${limitQuery}&page=${response.nextPage}` : null,
+        prevLink: response.hasPrevPage ? `/api/products?sort=${sortQuery}&category=${categoryName}&limit=${limitQuery}&page=${response.prevPage}` : null,
+        nextLink: response.hasNextPage ? `/api/products?sort=${sortQuery}&category=${categoryName}&limit=${limitQuery}&page=${response.nextPage}` : null,
       })
     
   } catch (error) {
