@@ -21,7 +21,7 @@ const handleSelect = async (e) => {
       ? `limit=1000`
       : `limit=${selectQuantityDisplayed.value}&`;
   const response = await fetch(
-    `${config.localHost}/api/products?${sort}${category}${limit}`
+    `/api/products?${sort}${category}${limit}`
   );
   const data = await response.json();
   display(data.payload, data);
@@ -48,7 +48,7 @@ const display = async (productsArray,data) => {
           <h5 class="card-title">${element.title}</h5>
           </div>
             <p class="card-text">$${element.price}</p>
-            <a href="http://localhost:5000/products/${element._id}" class="btn btn-primary">ver producto</a>
+            <a href="/products/${element._id}" class="btn btn-primary">ver producto</a>
           </div>
         </div>
 
@@ -71,14 +71,14 @@ window.onload = async () => {
   productSpinner.style.display = ''
   productsGrid.style.display = 'none'
   const categories_resp = await fetch(
-    `${config.localHost}/api/products/categories`
+    `/api/products/categories`
   );
   const categories = await categories_resp.json();
   selectCategories.innerHTML = `<option value ="-">Todos los productos</option>`;
   categories.forEach((element) => {
     selectCategories.innerHTML += `<option value="${element}" >${element}</option>`;
   });
-  const response = await fetch(`${config.localHost}/api/products?`);
+  const response = await fetch(`/api/products?`);
   const data = await response.json();
   const urlSearchParams = new URLSearchParams(window.location.search);
   const params = Object.fromEntries(urlSearchParams.entries());
