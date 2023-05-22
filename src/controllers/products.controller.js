@@ -202,7 +202,7 @@ export const add_15_FakeProducts = async (req,res,next) => {
       stock:5,
       price: 5000,
       description: faker.commerce.productDescription(),
-      category: cat[faker.random.number(2)],
+      category: cat[Math.floor(Math.random() * 2)],
       image: faker.image.fashion(),
       code: faker.random.alphaNumeric()}
       )
