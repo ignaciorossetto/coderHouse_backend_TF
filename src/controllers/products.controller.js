@@ -1,6 +1,7 @@
 import { ProductService } from "../repository/index.js";
 import CustomError from "../services/errors/customError.js";
 import config from "../config/config.js";
+import {faker} from '@faker-js/faker'
 
 
 export const getAllProducts = async (req, res, next) => {
@@ -191,4 +192,27 @@ export const deleteall = async (req, res) => {
     next(error)
   }
 };
+
+export const add_15_FakeProducts = async (req,res,next) => { 
+  try {
+    const fakeProduct = () => { 
+      return( 
+      {title: faker.commerce.productName(),
+      price: 5000,
+      description: faker.commerce.productDescription(),
+      category: faker.commerce.department(),
+      image: faker.image.imageUrl(),
+      code: faker.random.numeric()}
+      )
+    }
+    
+    for (let i = 0; i < 15; i++) {
+      await ProductService.add(fakeProduct())
+    }
+
+
+  } catch (error) {
+    next(error)
+  }
+ }
 
