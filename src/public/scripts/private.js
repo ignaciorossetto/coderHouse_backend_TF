@@ -2,7 +2,7 @@ const privateViewList = document.getElementById('privateViewList')
 
 window.onload = async() => {
     try {
-        const {data: {user}} = await axios.get('http://localhost:5000/api/users/check')
+        const {data: {user}} = await axios.get('/api/users/check')
         if (user.type === 'user') {
             const {dni, address, accStatement} = user.documents
             if (dni.status === 'approved' && address.status === 'approved' && accStatement.status === 'approved') return

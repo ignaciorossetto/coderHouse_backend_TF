@@ -11,7 +11,7 @@ confirmBtn.addEventListener('click', async(e)=> {
     currentPass.value = ''
     newPass.value = ''
     try {
-        response = await axios.put('http://localhost:5000/api/users/changePassword', obj)
+        response = await axios.put('/api/users/changePassword', obj)
     } catch (error) {
         const code = error.response.data.code
         return window.location.href = `/error?code=usernotfound${code}` 

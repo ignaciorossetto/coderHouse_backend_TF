@@ -1,13 +1,13 @@
 const productTitle = document.getElementById("productTitle");
 const productContainer = document.getElementById("productContainer");
-const socket2 = io('http://localhost:5000/');
+const socket2 = io('/');
 window.onload = async () => {
   try {
-  const user = await fetch('http://localhost:5000/api/users/check')
+  const user = await fetch('/api/users/check')
   const userData = await user.json()
   const {currentCart} = userData.user
   const value = document.URL.split("/")[4];
-  const response = await fetch(`http://localhost:5000/api/products/${value}`);
+  const response = await fetch(`/api/products/${value}`);
   const { product } = await response.json();
   productTitle.innerText = `${product.title}`;
   productContainer.innerHTML = `
@@ -52,14 +52,14 @@ const addCartButton = document.getElementById("addCartButton");
             quantity: 1
         }
         shopCart.push(obj)
-        await axios.put(`http://localhost:5000/api/carts/${currentCart.cart._id}`, {shopCart : shopCart})
+        await axios.put(`/api/carts/${currentCart.cart._id}`, {shopCart : shopCart})
         socket2.emit('productAdded', shopCart)
         // location.reload()
         return
       } else {
         const index = shopCart.findIndex((e)=> e.product === id)
         shopCart[index].quantity += 1
-        await axios.put(`http://localhost:5000/api/carts/${currentCart.cart._id}`, {shopCart : shopCart})
+        await axios.put(`/api/carts/${currentCart.cart._id}`, {shopCart : shopCart})
         socket2.emit('productAdded', shopCart)
         return
       }

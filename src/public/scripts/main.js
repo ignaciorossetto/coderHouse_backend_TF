@@ -1,4 +1,4 @@
-const socket1 = io('http://localhost:5000/');
+const socket1 = io('/');
 const logoutBtn = document.getElementById('logoutBtn')
 const loginBtn = document.getElementById('loginBtn')
 const privateBtn = document.getElementById('privateBtn')
@@ -11,9 +11,9 @@ const profileImgHeader = document.getElementById('profileImgHeader')
 
 const handleClick = async() => {
     try {
-        await fetch('http://localhost:5000/api/users/logout')
+        await fetch('/api/users/logout')
         document.cookie = "coderCookieToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        window.location.replace('http://localhost:5000/login?logout_status=success')
+        window.location.replace('/login?logout_status=success')
         displayLogOut()
     } catch (error) {
         console.log(error);
@@ -37,7 +37,7 @@ logoutBtn.addEventListener('click', handleClick)
 const displayLogOut = async() => {
 
     try {
-        const response = await fetch('http://localhost:5000/api/users/check')
+        const response = await fetch('/api/users/check')
         const data = await response.json()
         console.log('data', data)
         if (!data.user.admin) {

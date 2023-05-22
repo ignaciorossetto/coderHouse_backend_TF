@@ -15,11 +15,11 @@ const changePassSubmitHandler = async(e) => {
         email: params.email
     }
     try {
-        const response =await axios.post('http://localhost:5000/api/users/changepass', newPass)
+        const response =await axios.post('/api/users/changepass', newPass)
         if (response) {
             changePassFormContainer.innerHTML = ` 
             <h2>Contraseña modificada con exito</h2>
-            <h5>Ingresa al sitio <a href='http://localhost:5000/login'>haciendo click aqui</a></h5>
+            <h5>Ingresa al sitio <a href='/login'>haciendo click aqui</a></h5>
         `
         }
     } catch (error) {

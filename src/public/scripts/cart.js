@@ -10,7 +10,7 @@ const deleteHandler = async(id) => {
   if (shopCart[index].quantity <= 0){
     shopCart.splice(index, 1)
   }
-  await axios.put(`http://localhost:5000/api/carts/${userCartId}`, {shopCart: shopCart})
+  await axios.put(`/api/carts/${userCartId}`, {shopCart: shopCart})
   renderCart(userCartId)
   socket3.emit('productAdded', shopCart)
 };
@@ -18,7 +18,7 @@ const deleteHandler = async(id) => {
 
 
 const renderCart = async(cartID) => {
-  const response = await axios.get(`http://localhost:5000/api/carts/${cartID}`)
+  const response = await axios.get(`/api/carts/${cartID}`)
   const {cart : {shopCart}} = response.data
   let cartContainer = document.getElementById("cartContainer");
   let total = 0;
@@ -63,7 +63,7 @@ const renderCart = async(cartID) => {
 
 
 window.onload = async() => {
-  const response = await fetch('http://localhost:5000/api/users/check')
+  const response = await fetch('/api/users/check')
   const data = await response.json()
   currentCart = data.user.currentCart
   userCartId = currentCart?.cart?._id

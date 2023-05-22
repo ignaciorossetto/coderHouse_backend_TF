@@ -42,7 +42,7 @@ createProductButton.addEventListener('click', async(e)=> {
 })
 
 const display = async() => {
-    const response = await axios.get(`http://localhost:5000/api/carts/${userCartId}`)
+    const response = await axios.get(`/api/carts/${userCartId}`)
     const {cart : {shopCart}} = response.data
     let cartResume = document.getElementById('cartResume')
     let total = 0
@@ -69,7 +69,7 @@ const display = async() => {
 
 
 window.onload = async() => {
-    const response = await fetch('http://localhost:5000/api/users/check')
+    const response = await fetch('/api/users/check')
     const data = await response.json()
     currentCartIndex = data.user.carts.findIndex(c=>c.confirmed === false)
     currentCart = data.user.currentCart

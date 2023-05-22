@@ -33,7 +33,7 @@ const display = async(user) => {
 
 window.onload = async() => {
     try {
-        const {data: {user}} = await axios.get('http://localhost:5000/api/users/check')
+        const {data: {user}} = await axios.get('/api/users/check')
         display(user)
         console.log(user?.documents)
         

@@ -195,19 +195,18 @@ export const deleteall = async (req, res) => {
 
 export const add_15_FakeProducts = async (req,res,next) => { 
   try {
+    const cat = ['Season 2021', 'Season 2022', 'Season 2023']
     const fakeProduct = () => { 
       return( 
       {title: faker.commerce.productName(),
       stock:5,
       price: 5000,
       description: faker.commerce.productDescription(),
-      category: faker.commerce.department(),
-      image: faker.image.imageUrl(),
-      code: faker.random.numeric()}
+      category: cat[faker.random.number(2)],
+      image: faker.image.fashion(),
+      code: faker.random.alphaNumeric()}
       )
     }
-    const aa = fakeProduct()
-    console.log(aa)
     for (let i = 0; i < 15; i++) {
       await ProductService.add(fakeProduct())
     }

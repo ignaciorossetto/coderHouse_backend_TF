@@ -49,7 +49,7 @@ const displayCartInfo = () => {
 }
 
 window.onload = async() => {
-    const respone  = await fetch(`http://localhost:5000/api/carts/${cartId}`)
+    const respone  = await fetch(`/api/carts/${cartId}`)
     const data = await respone.json()
     cart = data.cart
     shippingInfo = data.cart.shippingInfo
