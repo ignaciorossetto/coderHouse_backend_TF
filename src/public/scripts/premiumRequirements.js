@@ -1,13 +1,10 @@
 const premiumReqContainer = document.getElementById('premiumReqContainer')
 
 const pendingToapprovedHandleBtn = async(file) => {
-    console.log(file)
     const response  = await axios.get(`/api/users/changePremiumReqStatus/${file}`)
-    console.log('response', response)
 }
 const display = async(user) => {
     for (const key in user?.documents) {
-        console.log(`${user['documents'][key]['name']}FormContainer`)
         if (user.type === 'premium') {
             premiumReqContainer.innerHTML = `
                 <h1>Felicitaciones, ahora sos un usuario PREMIUM!! </h1>
@@ -35,7 +32,6 @@ window.onload = async() => {
     try {
         const {data: {user}} = await axios.get('/api/users/check')
         display(user)
-        console.log(user?.documents)
         
     } catch (error) {
         console.log(error)

@@ -5,7 +5,6 @@ import {faker} from '@faker-js/faker'
 
 
 export const getAllProducts = async (req, res, next) => {
-  console.log('hitted')
   let categoryName = req.query.category
   const catQuery = categoryName === undefined || categoryName === 'undefined'  ? {} : {category: categoryName}
   const limitQuery = req.query.limit === undefined ? 1000 : req.query.limit
@@ -16,7 +15,6 @@ export const getAllProducts = async (req, res, next) => {
       const response = await ProductService.getAllPaginate(catQuery, {
         limit: limitQuery, page: pageQuery, sort: sortQuery === 'asc' ? {price:1} : sortQuery === 'desc' ? {price:-1} : {}
       })
-      console.log(response)
       if (!response) {
         return CustomError.createError({
           name: "DB error",

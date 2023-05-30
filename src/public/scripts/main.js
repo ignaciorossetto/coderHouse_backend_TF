@@ -22,7 +22,6 @@ const handleClick = async() => {
 
 
 socket1.on('totalQuantityInCart', data => {
-    console.log(data)
     if (data.length > 0) {
         let total = 0
         data.forEach(e => {
@@ -39,7 +38,6 @@ const displayLogOut = async() => {
     try {
         const response = await fetch('/api/users/check')
         const data = await response.json()
-        console.log('data', data)
         if (!data.user.admin) {
             adminBtn.style.display = 'none'
         }
