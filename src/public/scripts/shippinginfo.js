@@ -1,5 +1,6 @@
 const createProductButton = document.getElementById('createProductButton')
 const shippingInfoContainer = document.getElementById('shippingInfoContainer')
+const shippingErrorSpan = document.getElementById('shippingErrorSpan')
 let userCartId
 let currentCartIndex
 let userId
@@ -13,6 +14,14 @@ createProductButton.addEventListener('click', async(e)=> {
         email: e.target.form[3].value,
         cellphone: e.target.form[4].value,
     }
+
+    if (Object.values(ship).some((e)=> e.length === 0)) {
+        shippingErrorSpan.style.color = 'red'
+        shippingErrorSpan.innerText = 'Todos los campos son obligatorios!!'
+        return 
+    }
+
+    console.log(ship)
     const payment= {
         method: e.target.form[5].value,
         status: 'pendiente',
